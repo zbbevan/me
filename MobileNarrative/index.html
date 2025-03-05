@@ -1,0 +1,294 @@
+<html>
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Libraries for Boostrap and Font Awesome-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!--Libraries for React JS and D3-->
+    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src='MobileNarrative/assets/js/React/Component/ReactDataTable.js' type='text/babel'></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3-scale-radial.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
+    <!--Reference to my Stylesheet-->
+    <link rel="stylesheet" href="MobileNarrative/myStyle.css">
+    <Title>GIMM X MTG</Title>
+</head>
+
+<body onresize="updateGraph()">
+    <nav>
+        <ul>
+            <a href="#radialChart"><button class="button">Favorite Colors</button></a>
+            <a href="#my_wordcloud"><button class="button">Favorite Combinations</button></a>
+            <a href="#leastFav"><button class="button">Least Favorites</button></a>
+            <a href="#react-data-table"><button class="button">Table</button></a>
+            <a href="https://zbvn.dev"><button class="main-menu-button">Home</button></a>
+        </ul>
+    </nav>
+    <div id="header" class="colorText">
+
+        <h1>
+            <i class="fa-solid fa-leaf"></i>
+            <i class="fa-regular fa-sun"></i>
+            GIMM
+            <i class="fa-solid fa-skull"></i>
+            MTG
+            <i class="fa-solid fa-fire-flame-curved"></i>
+            <i class="fa-solid fa-droplet"></i>
+        </h1>
+    </div>
+
+    <div class="container">
+        <div class="grid-section row">
+            <div class="col-md-6">
+                <div class="col-md-12">
+                    <p class="grid-section row">
+                        Many of us have discovered this semester that quite a few GIMM students, as well as some of our
+                        professors, like to indulge in a bit of Magic The Gathering, myself included. As I came to
+                        realize this earlier this semester, I decided that I wanted to do a bit of a deep dive into
+                        these students.</p>
+                    <ul class="list-style grid-section row">
+                        <li>How many students play?</li>
+                        <li>How did they learn about MTG?</li>
+                        <li> What colors do GIMM students tend to enjoy?</li>
+                        <li> What formats?</li>
+                    </ul>
+                    <p class="grid-section row">
+                        To find the answers to these questions, I did the simplest thing; Ask. I made two surveys about
+                        MTG: One for GIMM students, and one to post on Reddit. By collecting these two pools of data, we
+                        shall be able to compare the MTG trends of students to those online, and make an analysis of
+                        GIMM personalities, based on those trends.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img src="https://zbstaticcontent.blob.core.windows.net/public/MobileNarrative/MTGCardStack.jpeg" alt="CardStack" class="img-fluid">
+            </div>
+        </div>
+        <div class="grid-section row">
+            <div class="col-md-12">
+                <h1>Favorite Color</h1>
+            </div>
+            <div class="col-md-12">
+                <select id="dataPicker" class="custom-options">
+                    <option onClick="updateGraph()">
+                        Survey Data</option>
+                    <option onClick="updateGraph()">
+                        GIMM Data</option>
+                </select>
+            </div>
+            <div id="radialChart" class="col-md-6">
+                <div id="my_dataviz"></div>
+            </div>
+            <div class="col-md-6">
+                <p>
+                    These graphs show the percentage of players who voted for which of the five colors in MTG are their
+                    favorite to play. It’s immediately obvious to see that GIMM has an incredible bias towards playing
+                    blue, with a whopping 54% of the total votes. Compared to the online statistics, blue is a bit more
+                    average, with Black and Green being nearly tied for most popular (25.6% vs. 24.8%). Of the five
+                    colors in MTG, blue is considered the one with the most “control” over cardplay. It’s all about
+                    counter-spells and card draw, and keeping the card advantage over your opponents. Black is also a
+                    color based in control, but rather than boosting your own advantage, Black emphasizes reducing your
+                    opponents advantage, via destroying and sacrificing creatures, forcing others to discard cards from
+                    their hands, and by draining their life directly.
+                </p>
+            </div>
+        </div>
+        <div class="grid-section row">
+            <div class="col-md-6">
+                <p>
+                    Next, looking at the combinations of colors, online the most popular color combo appears to again be
+                    Black and Green, aka “Golgari”. The second highest, “Dimir”, is Blue Black. From the data I gathered
+                    from GIMM students, the three most popular color combinations were Blue Red (Izzet), Blue Black
+                    (Dimir), and Blue Green (Simic). As consistent with the previous data, Blue is incredibly popular,
+                    and online, Black appears to be the most used as well.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-12">
+                    <h1 class="grid-section row">Favorite Two-Color Combinations</h1>
+                    <div class="grid-section row wordCloudBackground" id="my_wordcloud"></div>
+                </div>
+            </div>
+        </div>
+        <div class="grid-section row">
+            <h1 class="col-md-12 centerText" id="leastFav">Least Favorite Colors</h1>
+            <div class="col-md-12 embed-responsive embed-responsive-16by9">
+                <video controls width="100%" height="auto" src="https://zbstaticcontent.blob.core.windows.net/public/MobileNarrative/GIMM-260-BucketVideo.mp4" type="video/mp4"
+                    frameborder="0" allowfullscreen></video>
+            </div>
+
+        </div>
+        <div class="grid-section row">
+            <div class="col-md-6">
+                <img id="andrii" src="https://zbstaticcontent.blob.core.windows.net/public/MobileNarrative/lookatthisguy.gif" alt="andriiHaha" class="img-fluid" onmouseover="hover(this)"
+                    onmouseout="unhover(this)">
+            </div>
+            <div class="col-md-6">
+                <p> Overall, I’d argue that the majority of MTG players like one thing in particular; Power. We want a
+                    sense
+                    of control that we must be deeply lacking in the other parts of our lives. The overwhelming
+                    popularity
+                    of Blue and Black in these two circles show that on average, MTG players like playing decks that are
+                    mean. They want to be in control of the round, and they take pleasure in seeing the downfall of
+                    their
+                    opponents, even more so than they do in winning the round itself. Not only are those two colors the
+                    most
+                    played between these groups of players, but they are also the two least favorite colors to play
+                    against,
+                    Blue especially. There’s nothing a counterspell-spamming player hates more…than an opponent’s
+                    counterspell.
+
+                    In Magic the Gathering, Blue is the color of hypocrisy, and we should all be ashamed of ourselves.
+                </p>
+            </div>
+        </div>
+        <div class="grid-section row">
+            <div class="col-md-12" id="react-data-table"></div>
+        </div>
+    </div>
+</body>
+
+<script>
+    let csvFileNames = {
+        "Survey Data": "https://zbstaticcontent.blob.core.windows.net/public/MobileNarrative/ZB_MTGSurveyFavoriteColors.csv",
+        "GIMM Data": "https://zbstaticcontent.blob.core.windows.net/public/MobileNarrative/ZB_MTGGIMMSurveyColors.csv"
+    };
+
+    async function drawGraph(colorData) {
+        //console.log(colorData);
+        const parentWidth = document.getElementById("radialChart").clientWidth;
+        // set the dimensions and margins of the graph
+        var margin = { top: 0, right: 0, bottom: 0, left: 0 },
+            width = parentWidth * 0.9,
+            height = parentWidth * 0.9,
+            innerRadius = width / 2 * 0.35,
+            outerRadius = width / 2;   // the outerRadius goes from the middle of the SVG area to the border
+        // append the svg object
+        document.getElementById("my_dataviz").innerHTML = "";
+        let svg = d3.select("#my_dataviz")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + (width / 2 + margin.left) + "," + (height / 2 + margin.top) + ")");
+        var x = d3.scaleBand()
+            .range([0, 2 * Math.PI])    // X axis goes from 0 to 2pi = all around the circle. If I stop at 1Pi, it will be around a half circle
+            .align(0)                  // This does nothing
+            .domain(colorData.map(function (d) { return d.Color; })); // The domain of the X axis is the list of states.
+        var y = d3.scaleRadial()
+            .range([innerRadius, outerRadius])   // Domain will be define later.
+            .domain([0, 100]); // Domain of Y is from 0 to the max seen in the data
+        const colors = d3.scaleOrdinal()
+            .domain(["Blue", "White", "Green", "Red", "Black"])
+            .range(["#004aff", "#ffe647", "#00e206", "#ff0000", "#000000"]);
+        // Add the bars
+        var bars = svg.append("g")
+            .selectAll("path")
+            .data(colorData)
+            .enter()
+            .append("path")
+            .style("fill", d => colors(d.Color))
+            .attr("d", d3.arc()     // imagine your doing a part of a donut plot
+                .innerRadius(innerRadius)
+                .outerRadius(function (d) { return y(d.Percentage); })
+                .startAngle(function (d) { return x(d.Color); })
+
+                .endAngle(function (d) { return x(d.Color) + x.bandwidth(); })
+                .padAngle(0.01)
+                .padRadius(innerRadius));
+        // Add the labelsx
+        svg.append("g")
+            .selectAll("g")
+            .data(colorData)
+            .enter()
+            .append("g")
+            .attr("text-anchor", function (d) { return (x(d.Color) + x.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "end" : "start"; })
+            .attr("transform", function (d) { return "rotate(" + ((x(d.Color) + x.bandwidth() / 2) * 180 / Math.PI - 90) + ")" + "translate(" + (y(d.Percentage) + 10) + ",0)"; })
+            .append("text")
+            .text(function (d) { return (d.Color) })
+            .attr("transform", function (d) { return (x(d.Color) + x.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "rotate(180)" : "rotate(0)"; })
+            .style("fill", d => colors(d.Color))
+            .style("font-size", "20px")
+            .attr("alignment-baseline", "middle")
+    }
+    function updateGraph() {
+        let csvFile = csvFileNames[document.getElementById("dataPicker").value];
+        d3.csv(csvFile, colorData => {
+            drawGraph(colorData);
+        });
+    }
+    window.addEventListener('load', updateGraph());
+
+    const parentWidth = document.getElementById("my_wordcloud").clientWidth;
+    const fontMultiplier = 3;
+
+    var myWords = [{ word: "Rakdos", size: fontMultiplier * "12", color: "#B75B5B" }, { word: "Orzhov", size: fontMultiplier * "12", color: "#f3e8a4" }, { word: "Izzet", size: fontMultiplier * "12", color: "#4340dd" }, { word: "Gruul", size: fontMultiplier * "13", color: "#2ca300" },
+    { word: "Dimir", size: fontMultiplier * "18", color: "#122f5e" }, { word: "Golgari", size: fontMultiplier * "21", color: "#194d00" }, { word: "Selesnya", size: fontMultiplier * "11", color: "#e9f552" }, { word: "Simic", size: fontMultiplier * "12", color: "#52a7f5" },
+    { word: "Boros", size: fontMultiplier * "11", color: "#ff8f89" }, { word: "Azorius", size: fontMultiplier * "11", color: "#aef3ff" }]
+
+    // set the dimensions and margins of the graph
+    var margin = { top: 10, right: 10, bottom: 10, left: 10 },
+        width = 450 - margin.left - margin.right,
+        height = 450 - margin.top - margin.bottom;
+
+    // append the svg object to the body of the page
+    var svg = d3.select("#my_wordcloud").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");
+
+    // Constructs a new cloud layout instance. It run an algorithm to find the position of words that suits your requirements
+    // Wordcloud features that are different from one word to the other must be here
+    var layout = d3.layout.cloud()
+        .size([width, height])
+        .words(myWords.map(function (d) { return { text: d.word, size: d.size, color: d.color }; }))
+        .padding(5)        //space between words
+        //.rotate(function() { return ~~(Math.random() * 2) * 90; })
+        .fontSize(function (d) { return d.size; })      // font size of words
+        .on("end", draw);
+    layout.start();
+
+    // This function takes the output of 'layout' above and draw the words
+    // Wordcloud features that are THE SAME from one word to the other can be here
+    function draw(words) {
+        svg
+            .append("g")
+            .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+            .selectAll("text")
+            .data(words)
+            .enter().append("text")
+            .style("font-size", function (d) { return d.size; })
+            .style("fill", function (d) { return d.color; })
+            .attr("text-anchor", "middle")
+            .style("font-family", "Impact")
+            .attr("transform", function (d) {
+                return "translate(" + [d.x, d.y] + ")";
+            })
+            .text(function (d) { return d.text; });
+    }
+
+    function hover(element) {
+        element.setAttribute('src', 'https://zbstaticcontent.blob.core.windows.net/public/MobileNarrative/andriiClown.jpg');
+    }
+
+    function unhover(element) {
+        element.setAttribute('src', 'https://zbstaticcontent.blob.core.windows.net/public/MobileNarrative/lookatthisguy.gif');
+    }
+
+</script>
+
+</html>
