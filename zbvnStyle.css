@@ -33,6 +33,7 @@ p {
     font-size: 24px;
     line-height: 200%;
 }
+
 .my-link{
   color: #000000;
   font-family: "Ubuntu", sans-serif;
@@ -58,6 +59,7 @@ p {
   height: auto;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 20px;
 }
 
 
@@ -134,4 +136,13 @@ div.content {
 video {
   max-width: 100%;
   height: auto;
+}
+
+hr{
+  border: 10px solid #0c3dd1;
+  border-radius: 5px;
+  width: 90%;
+  box-sizing: border-box;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
