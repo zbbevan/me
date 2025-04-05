@@ -450,6 +450,7 @@ mark,
 .list-unstyled {
   padding-left: 0;
   list-style: none;
+  color: #6c757d;
 }
 
 .list-inline {
@@ -10998,7 +10999,7 @@ p {
 .info span {
   font-weight: 600;
   font-size: 14px;
-  color: #343a40;
+  color:#a7a7a7;
 }
 
 .line {
@@ -11183,7 +11184,7 @@ p {
       -ms-flex-preferred-size: 0;
           flex-basis: 0;
   display: block;
-  color: #212529;
+  color: #a7a7a7;
   font-size: 13px;
   font-weight: 500;
   opacity: .7;
