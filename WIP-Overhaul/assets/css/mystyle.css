@@ -71,6 +71,10 @@ body {
   background-color: #151518;
 }
 
+.myIcon {
+  font-size: 30px;
+}
+
 [tabindex="-1"]:focus {
   outline: 0 !important;
 }
@@ -11231,7 +11235,7 @@ p {
           transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
-  background: rgba(248, 92, 112, 0.8);
+  background:  #45b5ff;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
